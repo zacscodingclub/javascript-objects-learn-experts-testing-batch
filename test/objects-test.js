@@ -40,4 +40,18 @@ describe('objects', () => {
         not.to.have.all.keys({'Slowdive': 'Alison'})
     })
   })
+
+  describe('newPlaylist(playlist, artistName, songTitle)', () => {
+    before(() => {
+      playlist['Slowdive'] = 'Alison'
+      playlist['My Bloody Valentine'] = 'Sometimes'
+    })
+    
+    it('adds an `artistName` and `songTitle` as key-value pair and returns a new object', () => {
+      const newList = newPlaylist(playlist,'Phil Ochs', "Here's to the State of Mississippi")
+
+      expect(newList).
+        to.contain.all.keys({'Slowdive': 'Alison', 'My Bloody Valentine': 'Sometimes','Phil Ochs': "Here's to the State of Mississippi"})
+    })
+  })
 })
